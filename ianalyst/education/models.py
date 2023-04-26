@@ -1,12 +1,18 @@
 from django.db import models
 
-class Education(models.Model):
-    block_name = models.CharField(max_length=50)
-    lesson_name = models.IntegerField()
+class Lesson(models.Model):
+    lesson_name = models.CharField()
     content = models.TextField(blank=True)
+    block = models.ForeignKey('Block', on_delete=models.PROTECT, null=False)
 
     def __str__(self):
         return self.lesson_name
+
+class Block(models.Model):
+    block_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.block_name
 """
 class Account(models.Model):
     login = models.CharField(max_length=32)

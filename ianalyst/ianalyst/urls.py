@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from education.views import EducationAPIView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/lessons/', EducationAPIView.as_view())
 ]
