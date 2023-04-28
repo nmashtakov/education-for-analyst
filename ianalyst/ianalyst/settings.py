@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'education.apps.EducationConfig'
+    'rest_framework',
+    'education.apps.EducationConfig',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'ianalyst.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'analystdb',
+        'NAME': 'analystdatabase',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
