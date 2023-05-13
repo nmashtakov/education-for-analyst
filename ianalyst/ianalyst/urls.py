@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from education.views import EducationAPIView
+from education.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/lessons/', EducationAPIView.as_view())
+    path('api/v1/block/', BlockAPIView.as_view()),
+    path('api/v1/block/<int:pk>/', BlockAPICrud.as_view()),
+    path('api/v1/block/lessons/', EducationAPIView.as_view()),
 ]
