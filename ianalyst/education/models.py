@@ -19,8 +19,8 @@ class Block(models.Model):
 
 class Test(models.Model):
     test_name = models.CharField(max_length=256, blank=False)
-    block = models.ForeignKey('Block', on_delete=models.PROTECT, null=False)
-    lesson = models.ForeignKey('Lesson', on_delete=models.PROTECT, null=False)
+    block = models.ForeignKey('Block', on_delete=models.CASCADE, null=False)
+    lesson = models.ForeignKey('Lesson', on_delete=models.CASCADE, null=False)
 
     def __str__(self):
         return self.test_name
@@ -56,7 +56,7 @@ class PassedLesson(models.Model):
 class User(models.Model):
     email = models.EmailField(max_length=256, unique=True, blank=False)
     password = models.CharField(max_length=32, blank=False)
-    is_admin = models.BooleanField()
+    is_admin = models.BooleanField(default=0)
     name = models.CharField(max_length=32, blank=False)
     surname = models.CharField(max_length=36)
     birthday = models.DateField()
