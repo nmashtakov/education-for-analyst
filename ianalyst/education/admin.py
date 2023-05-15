@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Lesson, Test, Block, QuestionAnswer, TestResult, PassedLesson, User
 
+from .models import Lesson, Test, Block, QuestionAnswer, TestResult, PassedLesson, User
 
 admin.site.register(Lesson)
 admin.site.register(Block)
