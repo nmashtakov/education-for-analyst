@@ -11,7 +11,6 @@ class UserProfileManager(BaseUserManager):
 
         user.username = email
         user.name = name
-        user.photo = photo
         user.role = role
         user.set_password(password)
         user.save(using=self._db)

@@ -57,19 +57,8 @@ class PassedLesson(models.Model):
 
 
 class User(AbstractUser):
-    ADMINISTRATOR = 1
-    HEAD_MANAGER = 2
-    MANAGER = 3
-    ROLE_CHOICES = (
-        (ADMINISTRATOR, 'administrator'),
-        (HEAD_MANAGER, 'head_manager'),
-        (MANAGER, 'manager'),
-    )
-
-    role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, default=3, null=False, blank=False)
     email = models.EmailField(max_length=255, unique=True, null=False, blank=False)
     name = models.CharField(max_length=150, null=False, blank=False)
-    is_serving = models.BooleanField(default=False)
 
     objects = UserProfileManager()
     REQUIRED_FIELDS = []
