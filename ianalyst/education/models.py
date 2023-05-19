@@ -58,8 +58,7 @@ class PassedLesson(models.Model):
 
 class User(AbstractUser):
     email = models.EmailField(max_length=255, unique=True, null=False, blank=False)
-    name = models.CharField(max_length=150, null=False, blank=False)
 
     objects = UserProfileManager()
-    REQUIRED_FIELDS = []
-    USERNAME_FIELD = 'email'
+#     REQUIRED_FIELDS = []
+#     USERNAME_FIELD = 'email'
