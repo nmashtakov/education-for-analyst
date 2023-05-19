@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+from education.auth import UserProfileManager
 
 
 class Lesson(models.Model):
@@ -53,13 +56,9 @@ class PassedLesson(models.Model):
     user = models.ForeignKey('User', on_delete=models.PROTECT, null=False)
 
 
-class User(models.Model):
-    email = models.EmailField(max_length=256, unique=True, blank=False)
-    password = models.CharField(max_length=32, blank=False)
-    is_admin = models.BooleanField(default=0)
-    name = models.CharField(max_length=32, blank=False)
-    surname = models.CharField(max_length=36)
-    birthday = models.DateField()
+class User(AbstractUser):
+    email = models.EmailField(max_length=255, unique=True, null=False, blank=False)
 
-    def __str__(self):
-        return self.email
+    objects = UserProfileManager()
+#     REQUIRED_FIELDS = []
+#     USERNAME_FIELD = 'email'
