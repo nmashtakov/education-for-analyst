@@ -1,5 +1,4 @@
 from rest_framework import generics
-
 from .models import Lesson, Block, User
 from .permissions import IsAdminOrReadOnly
 from .serializers import LessonSerializer, BlockSerializer, UserSerializer

@@ -1,21 +1,5 @@
-"""
-URL configuration for ianalyst project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.schemas import get_schema_view
 from django.views.generic import TemplateView
@@ -33,9 +17,10 @@ urlpatterns = [
             extra_context={'schema_url':'api_schema'}
             ), name='swagger-ui'),
     path('admin/', admin.site.urls),
-    path(r"api/auth/token/", TokenObtainPairView.as_view()),
-    path(r"api/auth/token/refresh/", TokenRefreshView.as_view()),
-    path('api/signup', SignUpAPICrud.as_view()),
+    path(r"auth/token/", TokenObtainPairView.as_view()),
+    path(r"auth/token/refresh/", TokenRefreshView.as_view()),
+    path('api/', include('education.urls', namespace='education')),
+    path('signup', SignUpAPICrud.as_view()),
     path('api/v1/block/', BlockAPIView.as_view()),  # просмотр блоков
     path('api/v1/block/<int:pk>/', BlockAPICrud.as_view()),  # изменение/удаление блоков
     path('api/v1/block/lessons/', LessonAPIView.as_view()),  # просмотр уроков
