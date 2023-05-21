@@ -5,7 +5,7 @@ from rest_framework.schemas import get_schema_view
 from django.views.generic import TemplateView
 
 
-from education.views import *
+from ianalyst.education.views import *
 
 urlpatterns = [
     path('api_schema/', get_schema_view(
